@@ -32,10 +32,6 @@ public enum TagID: UInt8, Codable, CaseIterable {
 	case Compound	= 10
 	case IntArray	= 11
 	case LongArray	= 12
-	
-	var description: String {
-		return "TAG_\(self)"
-	}
 }
 
 protocol Tag: Codable {
