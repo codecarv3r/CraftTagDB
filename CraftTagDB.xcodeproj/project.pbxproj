@@ -22,6 +22,7 @@
 		1EF3A1F621BC5C5000F7104D /* TagLongArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */; };
 		1EF3A1F821BC5CA100F7104D /* TagString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F721BC5CA100F7104D /* TagString.swift */; };
 		1EF3A1FA21BC5CE000F7104D /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F921BC5CE000F7104D /* TagList.swift */; };
+		1EF3A1FC21BC5F5800F7104D /* TagCompound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLongArray.swift; sourceTree = "<group>"; };
 		1EF3A1F721BC5CA100F7104D /* TagString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagString.swift; sourceTree = "<group>"; };
 		1EF3A1F921BC5CE000F7104D /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCompound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */,
 				1EF3A1F721BC5CA100F7104D /* TagString.swift */,
 				1EF3A1F921BC5CE000F7104D /* TagList.swift */,
+				1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */,
 			);
 			path = CraftTagDB;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				1EF3A1F821BC5CA100F7104D /* TagString.swift in Sources */,
 				1EF3A1E621BC5AC300F7104D /* TagShort.swift in Sources */,
 				1EF3A1E221BC48F000F7104D /* Tag.swift in Sources */,
+				1EF3A1FC21BC5F5800F7104D /* TagCompound.swift in Sources */,
 				1EF3A1F621BC5C5000F7104D /* TagLongArray.swift in Sources */,
 				1EF3A1E821BC5AEA00F7104D /* TagInt.swift in Sources */,
 				1EF3A1E021BC486D00F7104D /* CraftTagDB.swift in Sources */,
