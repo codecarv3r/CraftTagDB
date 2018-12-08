@@ -18,6 +18,26 @@
 //  limitations under the License.
 //
 
-protocol Tag {
+public enum TagID: UInt8, Codable, CaseIterable {
+	case End		= 0
+	case Byte		= 1
+	case Short		= 2
+	case Int		= 3
+	case Long		= 4
+	case Float		= 5
+	case Double		= 6
+	case ByteArray	= 7
+	case String		= 8
+	case List		= 9
+	case Compound	= 10
+	case IntArray	= 11
+	case LongArray	= 12
 	
+	var description: String {
+		return "TAG_\(self)"
+	}
+}
+
+protocol Tag: Codable {
+	var id: TagID { get }
 }
