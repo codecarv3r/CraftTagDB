@@ -1,5 +1,5 @@
 //
-//  Tag.swift
+//  TagList.swift
 //  CraftTagDB
 //
 //  Created by Silas Schwarz on 12/8/18.
@@ -18,22 +18,7 @@
 //  limitations under the License.
 //
 
-public enum TagID: UInt8, Codable, CaseIterable {
-	case End		= 0
-	case Byte		= 1
-	case Short		= 2
-	case Int		= 3
-	case Long		= 4
-	case Float		= 5
-	case Double		= 6
-	case ByteArray	= 7
-	case String		= 8
-	case List		= 9
-	case Compound	= 10
-	case IntArray	= 11
-	case LongArray	= 12
-}
-
-public protocol Tag: Codable {
-	var id: TagID { get }
+public class TagList<T>: Tag where T : Tag {
+	public var id: TagID { return .List }
+	public var payload: [T]
 }

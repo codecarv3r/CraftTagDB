@@ -20,6 +20,8 @@
 		1EF3A1F021BC5BD000F7104D /* TagByteArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1EF21BC5BD000F7104D /* TagByteArray.swift */; };
 		1EF3A1F221BC5C1000F7104D /* TagIntArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F121BC5C1000F7104D /* TagIntArray.swift */; };
 		1EF3A1F621BC5C5000F7104D /* TagLongArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */; };
+		1EF3A1F821BC5CA100F7104D /* TagString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F721BC5CA100F7104D /* TagString.swift */; };
+		1EF3A1FA21BC5CE000F7104D /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F921BC5CE000F7104D /* TagList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		1EF3A1EF21BC5BD000F7104D /* TagByteArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagByteArray.swift; sourceTree = "<group>"; };
 		1EF3A1F121BC5C1000F7104D /* TagIntArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagIntArray.swift; sourceTree = "<group>"; };
 		1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLongArray.swift; sourceTree = "<group>"; };
+		1EF3A1F721BC5CA100F7104D /* TagString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagString.swift; sourceTree = "<group>"; };
+		1EF3A1F921BC5CE000F7104D /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				1EF3A1EF21BC5BD000F7104D /* TagByteArray.swift */,
 				1EF3A1F121BC5C1000F7104D /* TagIntArray.swift */,
 				1EF3A1F521BC5C5000F7104D /* TagLongArray.swift */,
+				1EF3A1F721BC5CA100F7104D /* TagString.swift */,
+				1EF3A1F921BC5CE000F7104D /* TagList.swift */,
 			);
 			path = CraftTagDB;
 			sourceTree = "<group>";
@@ -225,10 +231,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EF3A1F221BC5C1000F7104D /* TagIntArray.swift in Sources */,
+				1EF3A1FA21BC5CE000F7104D /* TagList.swift in Sources */,
 				1EF3A1EA21BC5B0D00F7104D /* TagLong.swift in Sources */,
 				1EF3A1EE21BC5B7400F7104D /* TagDouble.swift in Sources */,
 				1EF3A1F021BC5BD000F7104D /* TagByteArray.swift in Sources */,
 				1EF3A1E421BC58F300F7104D /* TagByte.swift in Sources */,
+				1EF3A1F821BC5CA100F7104D /* TagString.swift in Sources */,
 				1EF3A1E621BC5AC300F7104D /* TagShort.swift in Sources */,
 				1EF3A1E221BC48F000F7104D /* Tag.swift in Sources */,
 				1EF3A1F621BC5C5000F7104D /* TagLongArray.swift in Sources */,
