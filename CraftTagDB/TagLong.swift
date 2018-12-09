@@ -21,6 +21,7 @@
 public class TagLong: Tag {
 	public static var typeID: TagID { return .Long }
 	public var payload: Int64
+	public var description: String { return "\(payload)" }
 	
 	public init(payload: Int64) {
 		self.payload = payload

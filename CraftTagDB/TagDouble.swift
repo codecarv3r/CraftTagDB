@@ -21,6 +21,7 @@
 public class TagDouble: Tag {
 	public static var typeID: TagID { return .Double }
 	public var payload: Float64
+	public var description: String { return "\(payload)" }
 	
 	public init(payload: Float64) {
 		self.payload = payload

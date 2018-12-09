@@ -21,6 +21,7 @@
 public class TagByteArray: Tag {
 	public static var typeID: TagID { return .ByteArray }
 	public var payload: [Int8]
+	public var description: String { return "\(payload)" }
 	
 	public init(payload: [Int8]) {
 		self.payload = payload

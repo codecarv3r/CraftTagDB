@@ -52,7 +52,7 @@ public enum TagID: UInt8, Codable, CaseIterable {
 	}
 }
 
-public protocol Tag: Codable {
+public protocol Tag: Codable, CustomStringConvertible {
 	static var typeID: TagID { get }
 	var id: TagID { get }
 	func encode<K>(to container: inout KeyedEncodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws

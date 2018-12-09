@@ -21,6 +21,7 @@
 public class TagString: Tag {
 	public static var typeID: TagID { return .String }
 	public var payload: String
+	public var description: String { return "\"\(payload)\"" }
 	
 	public init(payload: String) {
 		self.payload = payload

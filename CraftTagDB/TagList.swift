@@ -22,6 +22,7 @@ public class TagList: Tag {
 	public static var typeID: TagID { return .List }
 	public var listID: TagID
 	public var payload: [Tag]
+	public var description: String { return "\(payload)" }
 	
 	public init(listID: TagID, payload: [Tag]) {
 		self.listID = listID
