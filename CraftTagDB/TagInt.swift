@@ -19,6 +19,10 @@
 //
 
 public class TagInt: Tag {
-	public var id: TagID { return .Int }
+	public static var typeID: TagID { return .Int }
 	public var payload: Int32
+	
+	public init(payload: Int32) {
+		self.payload = payload
+	}
 }

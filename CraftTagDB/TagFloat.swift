@@ -19,6 +19,10 @@
 //
 
 public class TagFloat: Tag {
-	public var id: TagID { return .Float }
+	public static var typeID: TagID { return .Float }
 	public var payload: Float32
+	
+	public init(payload: Float32) {
+		self.payload = payload
+	}
 }

@@ -19,18 +19,43 @@
 //
 
 public class TagCompound: Tag {
-	public var id: TagID { return .Compound }
+	public static var typeID: TagID { return .Compound }
 	public var payload: [String : Tag]
 	
 	public init(payload: [String : Tag]) {
 		self.payload = payload
 	}
 	
+	enum TagCompoundEntryKey: CodingKey {
+		case TagID
+		case Name
+		case Payload
+	}
+	
 	required public init(from decoder: Decoder) throws {
-		fatalError()
+		self.payload = [String : Tag]()
+		var container = try decoder.unkeyedContainer()
+		for _ in 0 ..< container.count! {
+			let entryContainer = try container.nestedContainer(keyedBy: TagCompoundEntryKey.self)
+			let tagID = try entryContainer.decode(TagID.self, forKey: .TagID)
+			if tagID != .End {
+				let name = try entryContainer.decode(String.self, forKey: .Name)
+				let payload = try tagID.idType.decode(from: entryContainer, for: .Payload)
+				self.payload[name] = payload
+			}
+		}
 	}
 	
 	public func encode(to encoder: Encoder) throws {
-		fatalError()
+		var container = encoder.unkeyedContainer()
+		for key in payload.keys {
+			let value = payload[key]!
+			var entryContainer = container.nestedContainer(keyedBy: TagCompoundEntryKey.self)
+			try entryContainer.encode(value.id, forKey: .TagID)
+			try entryContainer.encode(key, forKey: .Name)
+			try value.encode(to: &entryContainer, for: .Payload)
+		}
+		var entryContainer = container.nestedContainer(keyedBy: TagCompoundEntryKey.self)
+		try entryContainer.encode(TagID.End, forKey: .TagID)
 	}
 }

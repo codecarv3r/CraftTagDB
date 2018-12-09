@@ -19,6 +19,10 @@
 //
 
 public class TagIntArray: Tag {
-	public var id: TagID { return .IntArray }
+	public static var typeID: TagID { return .IntArray }
 	public var payload: [Int32]
+	
+	public init(payload: [Int32]) {
+		self.payload = payload
+	}
 }

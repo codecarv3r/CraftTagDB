@@ -34,6 +34,26 @@ class CraftTagDBTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+//		let list: Tag = TagList<TagString>(payload: [TagString(payload: "Hi there")])
+//		let mirror = Mirror(reflecting: list)
+//		print(mirror.subjectType)
+//		print("Is it \(TagList<TagString>.self): \(mirror.subjectType == TagList<TagString>.self)")
+//		for child in mirror.children {
+//			print("\(child.label): \(child.value)")
+//		}
+		
+		let nestedList1 = TagList(listID: .Int, payload: [TagInt(payload: 1), TagInt(payload: 2), TagInt(payload: 3)])
+		let nestedList2 = TagList(listID: .String, payload: [TagString(payload: "1"), TagString(payload: "2"), TagString(payload: "3")])
+		var array = [Tag]()
+		array.append(nestedList1)
+		array.append(nestedList2)
+		let list = TagList(listID: .List, payload: array)
+		let encoder = JSONEncoder()
+		let data = try! encoder.encode(list)
+		print(String(data: data, encoding: .utf8)!)
+		let decoder = JSONDecoder()
+		let remade = try! decoder.decode(TagList.self, from: data)
+		print(remade)
     }
 
     func testPerformanceExample() {

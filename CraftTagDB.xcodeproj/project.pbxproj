@@ -23,6 +23,7 @@
 		1EF3A1F821BC5CA100F7104D /* TagString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F721BC5CA100F7104D /* TagString.swift */; };
 		1EF3A1FA21BC5CE000F7104D /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1F921BC5CE000F7104D /* TagList.swift */; };
 		1EF3A1FC21BC5F5800F7104D /* TagCompound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */; };
+		1EF3A1FE21BD8F4700F7104D /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1FD21BD8F4700F7104D /* TagTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1EF3A1F721BC5CA100F7104D /* TagString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagString.swift; sourceTree = "<group>"; };
 		1EF3A1F921BC5CE000F7104D /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCompound.swift; sourceTree = "<group>"; };
+		1EF3A1FD21BD8F4700F7104D /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				1EDF164D21BC4692002A76A7 /* CraftTagDBTests.swift */,
 				1EDF164F21BC4692002A76A7 /* Info.plist */,
+				1EF3A1FD21BD8F4700F7104D /* TagTests.swift */,
 			);
 			path = CraftTagDBTests;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF3A1FE21BD8F4700F7104D /* TagTests.swift in Sources */,
 				1EDF164E21BC4692002A76A7 /* CraftTagDBTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

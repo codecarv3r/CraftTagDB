@@ -19,6 +19,10 @@
 //
 
 public class TagDouble: Tag {
-	public var id: TagID { return .Double }
+	public static var typeID: TagID { return .Double }
 	public var payload: Float64
+	
+	public init(payload: Float64) {
+		self.payload = payload
+	}
 }

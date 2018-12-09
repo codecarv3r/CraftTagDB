@@ -32,8 +32,55 @@ public enum TagID: UInt8, Codable, CaseIterable {
 	case Compound	= 10
 	case IntArray	= 11
 	case LongArray	= 12
+	
+	public var idType: Tag.Type {
+		switch self {
+		case .End: fatalError()
+		case .Byte: return TagByte.self
+		case .Short: return TagShort.self
+		case .Int: return TagInt.self
+		case .Long: return TagLong.self
+		case .Float: return TagFloat.self
+		case .Double: return TagDouble.self
+		case .ByteArray: return TagByteArray.self
+		case .String: return TagString.self
+		case .List: return TagList.self
+		case .Compound: return TagCompound.self
+		case .IntArray: return TagIntArray.self
+		case .LongArray: return TagLongArray.self
+		}
+	}
 }
 
 public protocol Tag: Codable {
+	static var typeID: TagID { get }
 	var id: TagID { get }
+	func encode<K>(to container: inout KeyedEncodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws
+	func encode(to container: inout UnkeyedEncodingContainer) throws
+	static func decode<K>(from container: KeyedDecodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws -> Tag
+	static func decode(from container: inout UnkeyedDecodingContainer) throws -> Tag
+}
+
+public extension Tag {
+	var id: TagID { return type(of: self).typeID }
+	
+	func encode<K>(to container: inout KeyedEncodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws {
+		try container.encode(self, forKey: key)
+	}
+	
+	func encode(to container: inout UnkeyedEncodingContainer) throws {
+		try container.encode(self)
+	}
+	
+	static func decode<K>(from container: KeyedDecodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws -> Tag {
+		return try container.decode(self, forKey: key)
+	}
+	
+	static func decode(from container: inout UnkeyedDecodingContainer) throws -> Tag {
+		return try container.decode(self)
+	}
+}
+
+public enum TagCodingError: Error {
+	case UnexpectedEndTag
 }

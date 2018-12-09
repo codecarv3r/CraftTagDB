@@ -19,6 +19,10 @@
 //
 
 public class TagLongArray: Tag {
-	public var id: TagID { return .LongArray }
+	public static var typeID: TagID { return .LongArray }
 	public var payload: [Int64]
+	
+	public init(payload: [Int64]) {
+		self.payload = payload
+	}
 }

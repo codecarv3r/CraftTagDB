@@ -19,6 +19,10 @@
 //
 
 public class TagByteArray: Tag {
-	public var id: TagID { return .ByteArray }
+	public static var typeID: TagID { return .ByteArray }
 	public var payload: [Int8]
+	
+	public init(payload: [Int8]) {
+		self.payload = payload
+	}
 }

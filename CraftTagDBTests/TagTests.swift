@@ -1,8 +1,8 @@
 //
-//  TagByte.swift
-//  CraftTagDB
+//  TagTests.swift
+//  CraftTagDBTests
 //
-//  Created by Silas Schwarz on 12/8/18.
+//  Created by Silas Schwarz on 12/9/18.
 //  Copyright 2018 Silas Schwarz
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +18,20 @@
 //  limitations under the License.
 //
 
-public class TagByte: Tag {
-	public static var typeID: TagID { return .Byte }
-	public var payload: Int8
-	
-	public init(payload: Int8) {
-		self.payload = payload
-	}
+import XCTest
+@testable import CraftTagDB
+
+class TagTests: XCTestCase {
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testTagIDEnum() {
+		let tag = TagFloat(payload: 6.5)
+		print("\(tag.id)")
+    }
 }

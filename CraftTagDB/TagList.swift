@@ -18,7 +18,38 @@
 //  limitations under the License.
 //
 
-public class TagList<T>: Tag where T : Tag {
-	public var id: TagID { return .List }
-	public var payload: [T]
+public class TagList: Tag {
+	public static var typeID: TagID { return .List }
+	public var listID: TagID
+	public var payload: [Tag]
+	
+	public init(listID: TagID, payload: [Tag]) {
+		self.listID = listID
+		self.payload = payload
+	}
+	
+	enum TagListCodingKeys: CodingKey {
+		case ListID
+		case List
+	}
+	
+	required public init(from decoder: Decoder) throws {
+		self.payload = [Tag]()
+		let container = try decoder.container(keyedBy: TagListCodingKeys.self)
+		listID = try container.decode(TagID.self, forKey: .ListID)
+		var entriesContainer = try container.nestedUnkeyedContainer(forKey: .List)
+		while !entriesContainer.isAtEnd {
+			let next = try listID.idType.decode(from: &entriesContainer)
+			payload.append(next)
+		}
+	}
+	
+	public func encode(to encoder: Encoder) throws {
+		var listContainer = encoder.container(keyedBy: TagListCodingKeys.self)
+		try listContainer.encode(listID, forKey: .ListID)
+		var container = listContainer.nestedUnkeyedContainer(forKey: .List)
+		for tag in payload {
+			try tag.encode(to: &container)
+		}
+	}
 }
