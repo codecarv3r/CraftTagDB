@@ -10,6 +10,7 @@
 		1E3D473321BDD10E00BF7406 /* NBTEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D473221BDD10E00BF7406 /* NBTEncoder.swift */; };
 		1E3D473521BDD36E00BF7406 /* BinaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D473421BDD36E00BF7406 /* BinaryEncoder.swift */; };
 		1E3D473721BDDB6000BF7406 /* BinaryEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D473621BDDB6000BF7406 /* BinaryEncoderTests.swift */; };
+		1E4E640721C053AB00EE6ED5 /* BinaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4E640621C053AB00EE6ED5 /* BinaryDecoder.swift */; };
 		1EDF164921BC4692002A76A7 /* CraftTagDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDF163F21BC4692002A76A7 /* CraftTagDB.framework */; };
 		1EDF164E21BC4692002A76A7 /* CraftTagDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF164D21BC4692002A76A7 /* CraftTagDBTests.swift */; };
 		1EF3A1E021BC486D00F7104D /* CraftTagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3A1DF21BC486D00F7104D /* CraftTagDB.swift */; };
@@ -43,6 +44,7 @@
 		1E3D473221BDD10E00BF7406 /* NBTEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBTEncoder.swift; sourceTree = "<group>"; };
 		1E3D473421BDD36E00BF7406 /* BinaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncoder.swift; sourceTree = "<group>"; };
 		1E3D473621BDDB6000BF7406 /* BinaryEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncoderTests.swift; sourceTree = "<group>"; };
+		1E4E640621C053AB00EE6ED5 /* BinaryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDecoder.swift; sourceTree = "<group>"; };
 		1EDF163F21BC4692002A76A7 /* CraftTagDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CraftTagDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDF164321BC4692002A76A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EDF164821BC4692002A76A7 /* CraftTagDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraftTagDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				1EF3A1FB21BC5F5800F7104D /* TagCompound.swift */,
 				1E3D473221BDD10E00BF7406 /* NBTEncoder.swift */,
 				1E3D473421BDD36E00BF7406 /* BinaryEncoder.swift */,
+				1E4E640621C053AB00EE6ED5 /* BinaryDecoder.swift */,
 			);
 			path = CraftTagDB;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			files = (
 				1EF3A1F221BC5C1000F7104D /* TagIntArray.swift in Sources */,
 				1EF3A1FA21BC5CE000F7104D /* TagList.swift in Sources */,
+				1E4E640721C053AB00EE6ED5 /* BinaryDecoder.swift in Sources */,
 				1EF3A1EA21BC5B0D00F7104D /* TagLong.swift in Sources */,
 				1EF3A1EE21BC5B7400F7104D /* TagDouble.swift in Sources */,
 				1EF3A1F021BC5BD000F7104D /* TagByteArray.swift in Sources */,
