@@ -18,12 +18,20 @@
 //  limitations under the License.
 //
 
-public class TagFloat: Tag {
+public final class TagFloat: Tag {
 	public static var typeID: TagID { return .Float }
 	public var payload: Float32
 	public var description: String { return "\(payload)" }
 	
 	public init(payload: Float32) {
 		self.payload = payload
+	}
+	
+	public func encodePayload(encoder: BinaryEncoder) throws {
+		encoder.encode(payload)
+	}
+	
+	public static func decodePayload(decoder: BinaryDecoder) throws -> Self {
+		return self.init(payload: try decoder.decode())
 	}
 }

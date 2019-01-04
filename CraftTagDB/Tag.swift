@@ -59,6 +59,8 @@ public protocol Tag: Codable, CustomStringConvertible {
 	func encode(to container: inout UnkeyedEncodingContainer) throws
 	static func decode<K>(from container: KeyedDecodingContainer<K>, for key: KeyedEncodingContainer<K>.Key) throws -> Tag
 	static func decode(from container: inout UnkeyedDecodingContainer) throws -> Tag
+	func encodePayload(encoder: BinaryEncoder) throws
+	static func decodePayload(decoder: BinaryDecoder) throws -> Self
 }
 
 public extension Tag {
@@ -83,4 +85,5 @@ public extension Tag {
 
 public enum TagCodingError: Error {
 	case UnexpectedEndTag
+	case UnknownTagID
 }

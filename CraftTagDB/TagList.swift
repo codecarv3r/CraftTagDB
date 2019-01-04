@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-public class TagList: Tag {
+public final class TagList: Tag {
 	public static var typeID: TagID { return .List }
 	public var listID: TagID
 	public var payload: [Tag]
@@ -51,6 +51,27 @@ public class TagList: Tag {
 		var container = listContainer.nestedUnkeyedContainer(forKey: .List)
 		for tag in payload {
 			try tag.encode(to: &container)
+		}
+	}
+	
+	public func encodePayload(encoder: BinaryEncoder) throws {
+		encoder.encode(listID)
+		encoder.encode(Int32(payload.count))
+		for tag in payload {
+			try tag.encodePayload(encoder: encoder)
+		}
+	}
+	
+	public static func decodePayload(decoder: BinaryDecoder) throws -> Self {
+		if let listID = TagID(rawValue: try decoder.decode(UInt8.self)) {
+			let count = try decoder.decode(Int32.self)
+			var payload = [Tag]()
+			for _ in 0 ..< count {
+				payload.append(try listID.idType.decodePayload(decoder: decoder))
+			}
+			return self.init(listID: listID, payload: payload)
+		} else {
+			throw TagCodingError.UnknownTagID
 		}
 	}
 }

@@ -28,9 +28,7 @@ public class BinaryEncoder {
 	var index = 0
 	var binary = UnsafeMutableRawBufferPointer.allocate(byteCount: Default.startingSpace, alignment: MemoryLayout<Int8>.alignment)
 	
-	public init() {}
-	
-	func insureSpace<T>(type: T.Type) {
+	func ensureSpace<T>(type: T.Type) {
 		if index + MemoryLayout<T>.size > available {
 			repeat {
 				available <<= 1
@@ -44,7 +42,7 @@ public class BinaryEncoder {
 	
 	public func encode<T>(_ item: T) {
 		withUnsafeBytes(of: item) { (buffer: UnsafeRawBufferPointer) in
-			insureSpace(type: T.self)
+			ensureSpace(type: T.self)
 			UnsafeMutableRawBufferPointer(rebasing: binary.suffix(from: index)).copyMemory(from: buffer)
 		}
 		index += MemoryLayout<T>.size

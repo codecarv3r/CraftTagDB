@@ -63,4 +63,26 @@ class CraftTagDBTests: XCTestCase {
         }
     }
 
+	func testLevelDAT() {
+		let data = try! Data(contentsOf: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/level.dat"))
+		var decoder = BinaryDecoder(data: data)
+		let firstInt = try! decoder.decode(Int32.self)
+		let secondInt = try! decoder.decode(Int32.self)
+		let dbTagID = try! decoder.decode(TagID.self)
+		let dbNameLength = try! decoder.decode(Int16.self)
+		XCTAssert(dbNameLength == 0)
+		var compoundTag = try! TagCompound.decodePayload(decoder: decoder)
+		let jsonEncoder = JSONEncoder()
+		let jsonData = try! jsonEncoder.encode(compoundTag)
+		try! jsonData.write(to: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/level.json"))
+		XCTAssert(decoder.total == decoder.index)
+		var encoder = NBTEncoder()
+		let recreatedData = try! encoder.encode(tag: compoundTag)
+		try! recreatedData.write(to: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/level2.dat"))
+		decoder = BinaryDecoder(data: recreatedData)
+		compoundTag = try! TagCompound.decodePayload(decoder: decoder)
+		encoder = NBTEncoder()
+		let recreatedData2 = try! encoder.encode(tag: compoundTag)
+		try! recreatedData.write(to: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/level3.dat"))
+	}
 }

@@ -26,6 +26,10 @@ public class BinaryDecoder {
 	public var available: Int { return total - index }
 	var binary: UnsafeMutableRawBufferPointer
 	
+	public enum BinaryDecodingError: Error {
+		case UnexpectedEnding
+	}
+	
 	public init(data: Data) {
 		total = data.count
 		binary = UnsafeMutableRawBufferPointer.allocate(byteCount: data.count, alignment: MemoryLayout<Int8>.alignment)
@@ -34,15 +38,20 @@ public class BinaryDecoder {
 		}
 	}
 	
-	public func decode<T>(_ type: T.Type) -> T? {
+	public func decode<T>() throws -> T {
+		return try decode(T.self)
+	}
+	
+	public func decode<T>(_ type: T.Type) throws -> T {
 		if MemoryLayout<T>.size > available {
-			return nil
+			throw BinaryDecodingError.UnexpectedEnding
 		}
 		let positionPointer = UnsafeMutableRawBufferPointer(rebasing: binary.suffix(from: index))
 		let basket = UnsafeMutablePointer<T>.allocate(capacity: 1)
 		UnsafeMutableRawPointer(basket).copyMemory(from: UnsafeRawPointer(positionPointer.baseAddress!), byteCount: MemoryLayout<T>.size)
 		let value = basket.pointee
 		basket.deallocate()
+		index += MemoryLayout<T>.size
 		return value
 	}
 	

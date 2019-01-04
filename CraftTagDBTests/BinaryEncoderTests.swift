@@ -39,4 +39,12 @@ class BinaryEncoderTests: XCTestCase {
 		}
 		try! encoder.data.write(to: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/BinaryEncoderTest.dat"))
     }
+	
+	func testEncodeTagID() {
+		let encoder = BinaryEncoder()
+		for tagID in TagID.allCases {
+			encoder.encode(tagID)
+		}
+		try! encoder.data.write(to: FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop/EncodedTagIDs.dat"))
+	}
 }

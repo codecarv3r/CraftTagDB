@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-public class TagCompound: Tag {
+public final class TagCompound: Tag {
 	public static var typeID: TagID { return .Compound }
 	public var payload: [String : Tag]
 	public var description: String { return "\(payload)" }
@@ -58,5 +58,28 @@ public class TagCompound: Tag {
 		}
 		var entryContainer = container.nestedContainer(keyedBy: TagCompoundEntryKey.self)
 		try entryContainer.encode(TagID.End, forKey: .TagID)
+	}
+	
+	public func encodePayload(encoder: BinaryEncoder) throws {
+		for (key, tag) in payload {
+			encoder.encode(tag.id)
+			let encodableString = TagString(payload: key)
+			try encodableString.encodePayload(encoder: encoder)
+			try tag.encodePayload(encoder: encoder)
+		}
+		encoder.encode(TagID.End)
+	}
+	
+	public static func decodePayload(decoder: BinaryDecoder) throws -> Self {
+		var payload = [String : Tag]()
+		while true {
+			let nextID = try decoder.decode(TagID.self)
+			if nextID == .End {
+				return self.init(payload: payload)
+			}
+			let key = try TagString.decodePayload(decoder: decoder)
+			let tag = try nextID.idType.decodePayload(decoder: decoder)
+			payload[key.payload] = tag
+		}
 	}
 }

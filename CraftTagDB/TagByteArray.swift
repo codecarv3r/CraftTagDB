@@ -18,12 +18,26 @@
 //  limitations under the License.
 //
 
-public class TagByteArray: Tag {
+public final class TagByteArray: Tag {
 	public static var typeID: TagID { return .ByteArray }
 	public var payload: [Int8]
 	public var description: String { return "\(payload)" }
 	
 	public init(payload: [Int8]) {
 		self.payload = payload
+	}
+	
+	public func encodePayload(encoder: BinaryEncoder) throws {
+		encoder.encode(Int32(payload.count))
+		encoder.encode(payload)
+	}
+	
+	public static func decodePayload(decoder: BinaryDecoder) throws -> Self {
+		let count = try decoder.decode(Int32.self)
+		var payload = [Int8]()
+		for _ in 0 ..< count {
+			payload.append(try decoder.decode())
+		}
+		return self.init(payload: payload)
 	}
 }

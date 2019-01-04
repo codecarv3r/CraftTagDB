@@ -21,7 +21,9 @@
 import Foundation
 
 public class NBTEncoder {
-	public func encode(tag: Tag) -> Data {
-		fatalError()
+	public func encode(tag: Tag) throws -> Data {
+		let encoder = BinaryEncoder()
+		try tag.encodePayload(encoder: encoder)
+		return encoder.data
 	}
 }
